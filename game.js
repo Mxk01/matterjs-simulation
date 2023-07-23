@@ -1,8 +1,6 @@
     // module aliases
     const  {Engine,Render,Runner,Body,World,Bodies,Composite,Events} = Matter;
-    // create an engine
     const engine = Engine.create();
-    
     // create a renderer
     const render = Render.create({
         element: document.body,
@@ -10,8 +8,7 @@
         options : {
             wireframes: false,
         }
-    });
-    
+    });    
     // create two boxes and a ground
     const boxA = Bodies.rectangle(400, 200, 80, 80,{
       render: {
@@ -23,15 +20,9 @@
     );
     const boxB = Bodies.rectangle(450, 50, 80, 80);
     const ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
-    const circle = Bodies.circle(300,40, 25);
-    
-    
+    const circle = Bodies.circle(300,40, 25);   
     // add all of the bodies to the world
     Composite.add(engine.world, [circle,boxA, boxB, ground]);
-    
-     
-    
-    
     document.addEventListener("keydown", (event) => {
         let keyCode = event.keyCode;
         let position = boxA.position;
@@ -73,15 +64,10 @@
     
         }
       }
-    });
-    
-    
-    
+    });    
     // run the renderer
-    Render.run(render);
-    
+    Render.run(render);   
     // create runner
-    const runner = Runner.create();
-    
+    const runner = Runner.create();    
     // run the engine
     Runner.run(runner, engine);
